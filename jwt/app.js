@@ -1,17 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const routerApi = require('./api/index')
+// const routerApi = require('./api/index')
 
 require('dotenv').config();
 
 const uriDb = process.env.DB_HOST;
 
 const connection = mongoose.connect(uriDb, {
-    useNewParser: true,
-    useCreateIndex: true,
+ // useNewParser: true,
+    // useCreateIndex: true,
     useUnifiedTopology: true,
-});
+}
+    
+   
+    
+);
 
 connection
     .then(() => {
