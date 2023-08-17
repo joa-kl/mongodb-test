@@ -1,9 +1,10 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const uriDb = process.env.DB_HOST;
 
 require('dotenv').config();
+
+const uriDb = process.env.DB_HOST;
 
 const connection = mongoose.connect(uriDb, {
     useNewParser: true,

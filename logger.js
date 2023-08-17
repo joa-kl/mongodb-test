@@ -1,4 +1,4 @@
-const logger = require('./module');
+// const logger = require('./module');
 
-logger.info('info function');
-logger.log('log function');
+// logger.info('info function');
+// logger.log('log function');
