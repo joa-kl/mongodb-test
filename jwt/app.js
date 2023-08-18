@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-// const routerApi = require('./api/index')
+const routerApi = require('./api/index')
 
 require('dotenv').config();
 
@@ -28,7 +28,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-// app.use('/api', routerApi)
+app.use('/api', routerApi)
 
 app.use((_, res, __) => {
     res.status(404).json({
