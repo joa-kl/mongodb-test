@@ -11,11 +11,9 @@ const connection = mongoose.connect(uriDb, {
  // useNewParser: true,
     // useCreateIndex: true,
     useUnifiedTopology: true,
-}
-    
-   
-    
+    }    
 );
+
 
 connection
     .then(() => {
