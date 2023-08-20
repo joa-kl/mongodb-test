@@ -1,11 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 const Dog = require('../models/dog');
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 const secret = process.env.SECRET;
+
+const auth = (req, res, next) => {
+passport.authenticate('jwt', { session: false }, (err, user) => {
+    if (!user || err) {
+        return res.status(401).json({
+            status: 'error',
+            code: 401,
+            message: 'Unauthorized',
+            data: 'Unauthorized',
+        });
+    }
+    req.user = user;
+    next();
+})(req, res, next);
+};
+
 
 router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
@@ -66,7 +83,7 @@ router.post('/register', async (req, res, next) => {
     }
 });
 
-router.get('/dogs', async (req, res, next) => {
+router.get('/dogs', auth, async (req, res, next) => {
     const dogs = await Dog.find();
     res.json({
         status: 'success',
