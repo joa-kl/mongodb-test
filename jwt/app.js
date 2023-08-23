@@ -16,8 +16,12 @@ const connection = mongoose.connect(uriDb, {
     }    
 );
 
+app.set('view engine', 'ejs');
+
+app.listen(3000);
+
 app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: __dirname });
+    res.render('index');
 })
 
 app.get('/about', (req, res) => {
@@ -64,9 +68,9 @@ app.use((err, _, res, ___) => {
     })
 });
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-});
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`)
+// });
 
