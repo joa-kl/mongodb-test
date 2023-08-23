@@ -51,7 +51,6 @@ router.post('/login', async (req, res, next) => {
             token,
         }
     });
-
 });
 
 router.post('/register', async (req, res, next) => {

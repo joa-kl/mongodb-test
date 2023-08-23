@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const routerApi = require('./api/index')
 mongoose.Promise = global.Promise;
+const app = express();
 
 require('dotenv').config();
 
@@ -15,6 +16,17 @@ const connection = mongoose.connect(uriDb, {
     }    
 );
 
+app.get('/', (req, res) => {
+    res.sendFile('./views/index.html', { root: __dirname });
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile('./views/about.html', { root: __dirname });
+})
+
+app.get('/about-us', (req, res) => {
+    res.redirect('/about');
+})
 
 connection
     .then(() => {
@@ -24,7 +36,7 @@ connection
         console.error(e);
     });
 
-const app = express()
+// const app = express()
 
 app.use(express.json())
 app.use(cors())
